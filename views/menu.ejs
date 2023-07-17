@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu Pateo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+     h4 {
+      padding-top: 20px;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    
+    #sidePage {
+      position: relative;
+      z-index: 0;
+    }
+    
+    #sidePage::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://img.freepik.com/vetores-premium/icone-esg-ambiental-social-e-governanca-csr-logo_434503-191.jpg?w=740');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2; /* Adjust the opacity value as needed */
+      z-index: -1;
+    }
+    
+    .sidebar {
+      background-color: #f8f9fa;
+      height: 100vh;
+      width: 200px;
+    }
+    
+    .content {
+      padding: 20px;
+    }
+    
+    .centered-title {
+      text-align: center;
+    }
+    
+    .nature-image {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 sidebar">
+        <h4>Menu</h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href='/tutorial'>🎓Tutorial MTR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/form">♻️Envio MTR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">🌎Acompanhamento MTR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contato">📞Contato</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9 content" id="sidePage">
+        <h1 class="centered-title" id="title">Pateo Hyundai <%= filial %></h1>
+        <p class="mt-5 ml-2" id="filial">Bem-vindo ao Web App de Controle de Emissões de MTR da Pateo Hyundai <%= filial %>!</p>
+        <p>Nossa plataforma foi desenvolvida para simplificar e agilizar o processo de controle de emissões de Manifesto de Transporte de Resíduos. Com recursos intuitivos de registro, acompanhamento em tempo real, geração de relatórios e notificações, você poderá gerenciar de forma eficiente suas emissões, contribuindo para um futuro mais sustentável.</p>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

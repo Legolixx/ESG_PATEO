@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tutorial Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+
+     h4{
+      padding-top: 20px;
+      text-align: center;
+      padding-bottom: 20px;
+   }
+    .sidebar {
+      background-color: #f8f9fa;
+      height: 100vh;
+      width: 200px
+    }
+    
+    .content {
+      padding: 20px;
+    }
+    
+    .centered-title {
+      text-align: center;
+    }
+
+   .image {
+    display: flex;
+    flex: 1 1 40rem;
+    z-index: 1;
+    align-items: center;
+    padding-bottom: 20px;
+}
+   .image img {
+    width: 100px;
+    height: 100px;
+    margin-left: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+   .image img:hover {
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 sidebar">
+        <h4>Tutorial Menu</h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="/menu">↩ Menu</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9 content">
+        <h1 class="centered-title">Pateo Hyundai  <%= filial %>      </h1>  
+        <br><br><br>
+
+        <div class="image">
+         <img  src="https://res.cloudinary.com/diz14smvb/image/upload/v1689616799/WhatsApp_Image_2023-07-17_at_14.58.47_z8tkuw.jpg" alt="Foto_victor">
+         <h5 class="mt-4 ml-3">Douglas Albuquerque - Diretor de Pós-vendas<br>
+         <p> 📱  (81)98726-6209</p>
+         </h5>
+        </div>
+        
+        <div class="image">
+         <img  src="https://res.cloudinary.com/diz14smvb/image/upload/v1689617043/WhatsApp_Image_2023-07-17_at_15.03.50_wnzvju.jpg" alt="Foto_victor">
+         <h5 class="mt-4 ml-3">Victor Fazekas - Enhenheiro Trainee<br>
+            <p> 📱  (81)99658-0195</p>
+         </h5>       
+       </div>
+
+       <div class="image">
+        <img  src="https://res.cloudinary.com/diz14smvb/image/upload/v1689616933/WhatsApp_Image_2023-07-17_at_15.01.37_dhdy76.jpg" alt="Foto_victor">
+        <h5 class="mt-4 ml-3">Rhayssa Anneccetto - Controladora de qualidade<br>
+         <p> 📱  (81)98759-3062</p>
+        </h5>
+       </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

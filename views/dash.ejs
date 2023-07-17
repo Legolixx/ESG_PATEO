@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Tables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .table td, .table th {
+      text-align: center;
+      width: 90px;
+    }
+    .table-fixed {
+      table-layout: fixed;
+    }
+    .table-container {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    .table-header {
+      background-color: darkblue;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <a href="/menu" class="ml-0">↩ Menu</a>
+  <div class="container">
+    <% const currentDate = new Date(); %>
+    <% const currentMonth = currentDate.getMonth(); %>
+    <% const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']; %>
+
+    <% const categories = [
+      { title: '🛢️ Óleo', data: arrayOleo },
+      { title: '☢️ Contaminado', data: arrayContaminado },
+      { title: '📮 Filtro', data: arrayFiltro },
+      { title: '🔋 Bateria', data: arrayBateria }
+    ]; %>
+
+   
+
+    <% categories.forEach(category => { %>
+      <div class="table-container">
+        <table class="table table-bordered table-fixed mt-3">
+          <thead>
+            <tr class="table-header">
+              <h5><%= category.title %></h5>
+              <% months.forEach((month, index) => { %>
+                <th><%= month %></th>
+              <% }); %>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              
+              <% months.forEach((month, index) => { %>
+                <td><%= index <= currentMonth ? category.data.some(item => item.name.includes(`${month}_`)) ? '✔' : '❌' : '' %></td>
+              <% }); %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>
+
+
+
