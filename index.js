@@ -346,31 +346,32 @@ app.get("/search", authenticate, async (req, res) => {
   const contaminadosPromise = drive.files.list({
     q: `'${req.session.contaminado}' in parents`,
     pageSize: 100,
-    fields: 'files(name)',
+    fields: 'files(id, name)',
   });
 
   const oleoPromise = drive.files.list({
     q: `'${req.session.oleo}' in parents`,
     pageSize: 100,
-    fields: 'files(name)',
+    fields: 'files(id, name)',
   });
 
   const filtroPromise = drive.files.list({
     q: `'${req.session.filtro}' in parents`,
     pageSize: 100,
-    fields: 'files(name)',
+    fields: 'files(id, name)',
   });
 
   const bateriaPromise = drive.files.list({
     q: `'${req.session.bateria}' in parents`,
     pageSize: 100,
-    fields: 'files(name)',
+    fields: 'files(id, name)',
   });
 
   const arrayContaminado = (await contaminadosPromise).data.files;
   const arrayOleo = (await oleoPromise).data.files;
   const arrayFiltro = (await filtroPromise).data.files;
   const arrayBateria = (await bateriaPromise).data.files;
+
 
   res.render("dash", { unidade, arrayContaminado, arrayOleo, arrayFiltro, arrayBateria })
 });
@@ -404,6 +405,97 @@ app.get('/tbateria', authenticate, (req, res) => {
 app.get('/tcontaminados', authenticate, (req, res) => {
   const unidade = req.session.unidade;
   res.render('./tutorial/contaminado', { filial: unidade })
+
+});
+
+
+app.get('/valida', authenticate, async (req, res) => {
+
+  const contaminado = req.session.contaminado;
+  const oleo = req.session.oleo;
+  const filtro = req.session.filtro;
+  const bateria = req.session.bateria;
+  const unidade = req.session.unidade;
+
+  const auth = new google.auth.GoogleAuth({
+    keyFile: "credentials.json",
+    scopes: ['https://www.googleapis.com/auth/drive'],
+  });
+
+  // Create client instance for auth
+  const client = await auth.getClient();
+
+  // Instance of Google Drive API
+  const drive = google.drive({ version: 'v3', auth });
+
+
+
+  // Retrieve a list of files in Google Drive
+  const folderOleo = await drive.files.list({
+    q: `'${oleo}' in parents`,
+    pageSize: 10,
+    fields: 'files(id, name)',
+  });
+
+  // Extract file ID and name from the response
+  const filesOleo = folderOleo.data.files.map((file) => {
+    return {
+      id: file.id,
+      name: file.name
+    };
+  });
+
+  // Retrieve a list of files in Google Drive
+  const folderFiltro = await drive.files.list({
+    q: `'${filtro}' in parents`,
+    pageSize: 10,
+    fields: 'files(id, name)',
+  });
+
+  // Extract file ID and name from the response
+  const filesFiltro = folderFiltro.data.files.map((file) => {
+    return {
+      id: file.id,
+      name: file.name
+    };
+  });
+
+  // Retrieve a list of files in Google Drive
+  const folderBateria = await drive.files.list({
+    q: `'${bateria}' in parents`,
+    pageSize: 10,
+    fields: 'files(id, name)',
+  });
+
+  // Extract file ID and name from the response
+  const filesBateria = folderBateria.data.files.map((file) => {
+    return {
+      id: file.id,
+      name: file.name
+    };
+  });
+
+  // Retrieve a list of files in Google Drive
+  const folderContaminado = await drive.files.list({
+    q: `'${contaminado}' in parents`,
+    pageSize: 10,
+    fields: 'files(id, name)',
+  });
+
+  // Extract file ID and name from the response
+  const filesContaminado = folderContaminado.data.files.map((file) => {
+    return {
+      id: file.id,
+      name: file.name
+    };
+  });
+
+
+
+
+
+
+  res.render('check', { filial: unidade, oleo: filesOleo, filtro: filesFiltro, bateria: filesBateria, contaminado: filesContaminado })
 
 });
 
