@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page ✅</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Courier Prime", monospace;
+      background-color: #fdfdfe;
+    }
+    h4 {
+      padding-top: 20px;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .alinha {
+      text-align: center;
+    }
+
+    .sidebar {
+      background-color: #f8f9fa;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 sidebar">
+        <h4>Validação Menu</h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="/menu">↩ Menu</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <h4>Óleo Usado</h4>
+        <ul class="list-unstyled">
+           <% const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+  
+          // Custom comparison function to extract month names without the year and sort chronologically
+          const customSort = (a, b) => {
+              const aMonth = a.name.replace(/_\d{4}$/, "");
+              const bMonth = b.name.replace(/_\d{4}$/, "");
+              return monthNames.indexOf(aMonth) - monthNames.indexOf(bMonth);
+          };
+  
+          const sortedFiles = oleo.sort(customSort);
+          %>
+          <% sortedFiles.forEach((file) => { %>
+              <li class="alinha">
+               <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
+              </li>
+          <% }); %>
+        </ul>
+      </div>
+
+      <div class="col-sm-3">
+        <h4>Filtro de Óleo</h4>
+        <ul class="list-unstyled">
+          <%  // Custom comparison function to extract month names without the year and sort chronologically
+      const customSortFiltro = (a, b) => {
+          const aMonth = a.name.replace(/_\d{4}$/, "");
+          const bMonth = b.name.replace(/_\d{4}$/, "");
+          return monthNames.indexOf(aMonth) - monthNames.indexOf(bMonth);
+      };
+
+      const sortedFilesFiltro = filtro.sort(customSortFiltro);
+      %>
+      <% sortedFilesFiltro.forEach((file) => { %>
+          <li class="alinha">
+           <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
+          </li>
+      <% }); %>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <h4>Contaminado</h4>
+        <ul class="list-unstyled">
+          <%  // Custom comparison function to extract month names without the year and sort chronologically
+  const customSortContaminado = (a, b) => {
+      const aMonth = a.name.replace(/_\d{4}$/, "");
+      const bMonth = b.name.replace(/_\d{4}$/, "");
+      return monthNames.indexOf(aMonth) - monthNames.indexOf(bMonth);
+  };
+ 
+  const sortedFilesContaminado = contaminado.sort(customSortContaminado);
+  %>
+  <% sortedFilesContaminado.forEach((file) => { %>
+      <li class="alinha">
+       <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
+      </li>
+  <% }); %>
+        </ul>
+      </div>
+
+      <div class="col-sm-2">
+        <h4>Bateria</h4>
+        <ul class="list-unstyled">
+          <%  // Custom comparison function to extract month names without the year and sort chronologically
+ const customSortBateria = (a, b) => {
+     const aMonth = a.name.replace(/_\d{4}$/, "");
+     const bMonth = b.name.replace(/_\d{4}$/, "");
+     return monthNames.indexOf(aMonth) - monthNames.indexOf(bMonth);
+ };
+
+ const sortedFilesBateria = bateria.sort(customSortBateria);
+ %>
+ <% sortedFilesBateria.forEach((file) => { %>
+     <li class="alinha">
+      <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
+     </li>
+ <% }); %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

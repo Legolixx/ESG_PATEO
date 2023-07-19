@@ -4,6 +4,39 @@
   <title>Menu Pateo</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Courier Prime", monospace;
+  background-color: #fdfdfe;
+}
+
+
+ h1 {
+  font-size: 50px;
+  font-weight: 500;
+  color: #553c9a;
+  border-right: 4px solid #000;
+  animation: cursor 1s infinite step-end, typing 15s infinite steps(30);
+  white-space: nowrap;
+  overflow: hidden;
+}
+@keyframes cursor{
+  0%, 100%{border-color: transparent;}
+  50%{border-color: #000;}
+}
+
+@keyframes typing{
+  0%{ width: 0ch} /*Text is hidden*/
+  30%{ width: 26ch;} /*The enitre header will be typed out*/
+  80%{ width: 26ch;} /*Text stays visible*/
+  90%{ width: 0ch;} /*Text is deleted*/
+  100%{ width: 0ch;} /*Text stays hidden*/
+}
+
+
      h4 {
       padding-top: 20px;
       text-align: center;
@@ -42,11 +75,6 @@
     .centered-title {
       text-align: center;
     }
-    
-    .nature-image {
-      width: 100%;
-      height: auto;
-    }
   </style>
 </head>
 <body>
@@ -65,12 +93,17 @@
             <a class="nav-link" href="/search">🌎Acompanhamento MTR</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/Valida">✅Validação</a>
+          </li>          
+          <li class="nav-item">
             <a class="nav-link" href="/contato">📞Contato</a>
           </li>
         </ul>
       </div>
       <div class="col-sm-9 content" id="sidePage">
-        <h1 class="centered-title" id="title">Pateo Hyundai <%= filial %></h1>
+        <div class="header">
+          <h1 class="ml-5">Pateo Hyundai <%= filial  %></h1> 
+        </div>
         <p class="mt-5 ml-2" id="filial">Bem-vindo ao Web App de Controle de Emissões de MTR da Pateo Hyundai <%= filial %>!</p>
         <p>Nossa plataforma foi desenvolvida para simplificar e agilizar o processo de controle de emissões de Manifesto de Transporte de Resíduos. Com recursos intuitivos de registro, acompanhamento em tempo real, geração de relatórios e notificações, você poderá gerenciar de forma eficiente suas emissões, contribuindo para um futuro mais sustentável.</p>
       </div>

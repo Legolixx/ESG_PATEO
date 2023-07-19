@@ -4,6 +4,26 @@
   <title>Data Tables</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+body {
+  font-size:14px;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Courier Prime", monospace;
+  background-color: #fdfdfe;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 500;
+  color: #553c9a;
+  border-right: 4px solid #000;
+  animation: cursor 1s infinite step-end, typing 15s infinite steps(20);
+  white-space: nowrap;
+  overflow: hidden;
+}
     .table td, .table th {
       text-align: center;
       width: 90px;
@@ -36,14 +56,19 @@
       { title: '🔋 Bateria', data: arrayBateria }
     ]; %>
 
+    <% function getFileLink(id) {
+      return ` https://drive.google.com/file/d/${id}/view?usp=drive_link`;
+
+ 
+    } %>
    
 
     <% categories.forEach(category => { %>
       <div class="table-container">
-        <table class="table table-bordered table-fixed mt-3">
+        <table class="table table-bordered table-fixed">
           <thead>
             <tr class="table-header">
-              <h5><%= category.title %></h5>
+              <h5 class="mt-3"><%= category.title %></h5>
               <% months.forEach((month, index) => { %>
                 <th><%= month %></th>
               <% }); %>
@@ -51,9 +76,15 @@
           </thead>
           <tbody>
             <tr>
-              
               <% months.forEach((month, index) => { %>
-                <td><%= index <= currentMonth ? category.data.some(item => item.name.includes(`${month}_`)) ? '✔' : '❌' : '' %></td>
+                <% const monthData = category.data.find(item => item.name.includes(`${month}_`)); %>
+                <td>
+                  <% if (index <= currentMonth && monthData) { %>
+                    <a href="<%= getFileLink(monthData.id) %>" target="_blank">✔️</a>
+                  <% } else { %>
+                    ❌
+                  <% } %>
+                </td>
               <% }); %>
             </tr>
           </tbody>

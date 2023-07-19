@@ -2,14 +2,25 @@
 <html>
 
 <head>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
     <title>MTR APP</title>
 
     <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Courier Prime", monospace;
+  background-color: #fdfdfe;
+}
  h4{
       padding-top: 20px;
       padding-bottom: 20px;
    }
+
     </style>
 </head>
 
@@ -26,7 +37,6 @@
               
             </ul>
           </div>
-
 
     <div class="container mt-3">
         <div class="card shadow" style="max-width: 500px; margin: 0 auto;">
@@ -59,6 +69,7 @@
         </div>
     </div>
 
+
     <script>
 
         document.getElementById("myButton").onclick = function () {
@@ -83,11 +94,13 @@
                 document.querySelector('p').style.display = 'block';
                 formElem.reset(); // Reset the form
                 //console.log(response);
+               
             }).catch(error => {
                 document.querySelector('p').textContent = "ocorreu um erro: " + error;
                 document.querySelector('p').style.display = 'block';
                 console.error(error);
             });
+            ("Arquivo enviado com sucesso!")
         });
     </script>
 </body>
