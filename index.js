@@ -390,7 +390,7 @@ app.get('/toleo', (req, res) => {
 
 });
 
-app.get('/tfiltro', authenticate, (req, res) => {
+app.get('/tfiltro', (req, res) => {
   const unidade = req.session.unidade;
   res.render('./tutorial/filtro', { filial: unidade })
 
