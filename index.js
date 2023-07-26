@@ -384,7 +384,7 @@ app.get('/contato', authenticate, (req, res) => {
 });
 
 
-app.get('/toleo', authenticate, (req, res) => {
+app.get('/toleo', (req, res) => {
   const unidade = req.session.unidade;
   res.render('./tutorial/oleo', { filial: unidade })
 
