@@ -51,11 +51,14 @@ body {
         <h4>Tutorial Filtro</h4>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="/menu">↩ Menu</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/tutorial">↩ Tutorial</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/menu">↩ Menu</a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="takeScreenshot">📸 FullPage ScreenShot</a>
+          </li>      
         </ul>
         <img class="filter-image mt-5 ml-5" src="https://res.cloudinary.com/diz14smvb/image/upload/v1690372452/WhatsApp_Image_2023-07-17_at_09.12.39-removebg-preview_gwmugw.png" alt="Oil filter KIA">
       </div>
@@ -84,6 +87,28 @@ body {
       </div>
     </div>
   </div>
+  <script>
+
+    document.getElementById('takeScreenshot').addEventListener('click', () => {
+      // Wait for 500 milliseconds before taking the screenshot
+      setTimeout(() => {
+        html2canvas(document.body, { useCORS: true }).then(function (canvas) {
+          // Convert canvas to image URL
+          const dataURL = canvas.toDataURL();
+    
+          // Create a temporary anchor element to initiate download
+          const link = document.createElement('a');
+          link.href = dataURL;
+          link.download = 'tutorial_screenshot.png';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }, 1000); // Adjust the delay as needed
+    });
+      
+  </script>
+  <script src="/js/html2canvas.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
