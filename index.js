@@ -16,6 +16,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Define the username and password
 const usernameRecife = process.env.USERNAME_RECIFE;
@@ -384,13 +385,14 @@ app.get('/contato', authenticate, (req, res) => {
 });
 
 
-app.get('/toleo', (req, res) => {
+app.get('/toleo', authenticate, (req, res) => {
   const unidade = req.session.unidade;
   res.render('./tutorial/oleo', { filial: unidade })
 
 });
 
-app.get('/tfiltro', (req, res) => {
+
+app.get('/tfiltro', authenticate, (req, res) => {
   const unidade = req.session.unidade;
   res.render('./tutorial/filtro', { filial: unidade })
 
