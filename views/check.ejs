@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page ✅</title>
+  <title>Validação</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
@@ -19,6 +19,12 @@
 
     .alinha {
       text-align: center;
+    }
+
+    .percentual{
+      text-align: center;
+       font-size: 20px;
+       font-weight: 700;
     }
 
     .sidebar {
@@ -58,6 +64,9 @@
                <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
               </li>
           <% }); %>
+                <li class="percentual mt-3">
+                 <%= perOleo %>%
+               </li>
         </ul>
       </div>
 
@@ -78,6 +87,9 @@
            <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
           </li>
       <% }); %>
+            <li class="percentual mt-3">
+              <%= perFiltro %>%
+            </li>
         </ul>
       </div>
 
@@ -98,6 +110,9 @@
        <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
       </li>
   <% }); %>
+        <li class="percentual mt-3">
+          <%= perCont %>%
+        </li>
         </ul>
       </div>
 
@@ -116,8 +131,11 @@
  <% sortedFilesBateria.forEach((file) => { %>
      <li class="alinha">
       <a href="https://drive.google.com/file/d/<%= file.id %>/view?usp=drive_link" target="_blank"><%= file.name %></a>
-     </li>
+     </li> 
  <% }); %>
+          <li class="percentual mt-3">
+            <%= perBate %>%
+          </li>
         </ul>
       </div>
     </div>
