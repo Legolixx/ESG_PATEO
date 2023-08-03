@@ -492,12 +492,22 @@ app.get('/valida', authenticate, async (req, res) => {
     };
   });
 
+ const lengthOleo = filesOleo.length;
+  const lengthFiltro = filesFiltro.length;
+  const lengthConta = filesContaminado.length;
+  const lengthBateria = filesBateria.length;
+
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1;
+
+  const percentOleo = ((lengthOleo / currentMonth) * 100).toFixed(0);
+  const percentFiltro = ((lengthFiltro / currentMonth) * 100).toFixed(0);
+  const percentConta = ((lengthConta / currentMonth) * 100).toFixed(0);
+  const percentBateria = ((lengthBateria / currentMonth) * 100).toFixed(0);
 
 
-
-
-
-  res.render('check', { filial: unidade, oleo: filesOleo, filtro: filesFiltro, bateria: filesBateria, contaminado: filesContaminado })
+  res.render('check', { filial: unidade, oleo: filesOleo, filtro: filesFiltro, bateria: filesBateria, contaminado: filesContaminado,
+                        perOleo: percentOleo, perFiltro: percentFiltro, perCont: percentConta, perBate: percentBateria })
 
 });
 
